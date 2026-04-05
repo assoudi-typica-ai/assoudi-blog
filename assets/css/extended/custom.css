@@ -1,0 +1,59 @@
+/* ── Kill the 320px min-height that causes the huge gap ─────────── */
+article.first-entry.home-info {
+    min-height: unset !important;
+    margin: 0 0 var(--gap) 0 !important;
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+}
+
+/* ── Title ──────────────────────────────────────────────────────── */
+article.home-info .entry-header h1 {
+    font-size: 1.9rem !important;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    -webkit-line-clamp: unset !important;
+}
+
+/* ── Body text ──────────────────────────────────────────────────── */
+article.home-info .entry-content {
+    font-size: 0.97rem;
+    line-height: 1.7;
+    color: var(--secondary);
+    max-width: 560px;
+}
+
+/* ── About me button ────────────────────────────────────────────── */
+article.home-info .about-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 20px;
+    background: var(--primary);
+    color: var(--theme) !important;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none !important;
+    transition: opacity 0.15s;
+}
+article.home-info .about-btn:hover {
+    opacity: 0.82;
+}
+
+/* ── Social icons: smaller, inline ──────────────────────────────── */
+article.home-info .social-icons {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin: 0 !important;
+}
+article.home-info .social-icons a svg {
+    width: 18px !important;
+    height: 18px !important;
+}
+
+/* ── RTL Arabic ──────────────────────────────────────────────────── */
+[dir="rtl"] article.home-info > div {
+    flex-direction: row-reverse;
+}

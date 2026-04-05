@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Hicham Assoudi</title>
+    <link>http://localhost:1313/assoudi-blog/</link>
+    <description>Recent content on Hicham Assoudi</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 05 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/assoudi-blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>http://localhost:1313/assoudi-blog/about/</link>
+      <pubDate>Sun, 05 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/assoudi-blog/about/</guid>
+      <description>&lt;p&gt;Hey I&amp;rsquo;m Hicham Assoudi.
+I help Oracle practitioners, architects, and enterprise teams make better AI implementation decisions by combining Oracle depth, real experiments, and research-grade evaluation.&lt;/p&gt;
+&lt;p&gt;I’m an Oracle consultant, AI researcher, and technical author.&lt;/p&gt;
+&lt;p&gt;My work sits at the intersection of enterprise Oracle technologies and practical artificial intelligence. I focus on topics such as Oracle Database AI, OCI Data Science, multilingual AI, and enterprise research-driven AI implementation patterns.&lt;/p&gt;
+&lt;p&gt;Over the course of my career, I have built deep experience in Oracle technologies across architecture, integration, data platforms, and enterprise delivery. In parallel, my academic path led me to a PhD in Artificial Intelligence and Natural Language Processing, with a long-standing interest in multilingual AI and domain-specific NLP.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Books</title>
+      <link>http://localhost:1313/assoudi-blog/books/</link>
+      <pubDate>Sun, 05 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/assoudi-blog/books/</guid>
+      <description>&lt;p&gt;This page gathers my books and long-form technical writing related to Oracle technologies, artificial intelligence, and natural language processing.&lt;/p&gt;
+&lt;h2 id=&#34;natural-language-processing-on-oracle-cloud-infrastructure&#34;&gt;Natural Language Processing on Oracle Cloud Infrastructure&lt;/h2&gt;
+&lt;img src=&#34;http://localhost:1313/assoudi-blog/images/books/nlp_on_oci.jpg&#34; alt=&#34;Natural Language Processing on Oracle Cloud Infrastructure&#34; width=&#34;220&#34;&gt;
+&lt;p&gt;A practical book on building and scaling NLP solutions on Oracle Cloud Infrastructure, with a focus on real architectures and applied enterprise use cases.&lt;/p&gt;
+&lt;h2 id=&#34;oracle-ai-and-database-engineering&#34;&gt;Oracle AI and Database Engineering&lt;/h2&gt;
+&lt;img src=&#34;http://localhost:1313/assoudi-blog/images/books/oracle_ai_guide.jpg&#34; alt=&#34;Data Engineer&#39;s Guide to Oracle Machine Learning and GenAI Services: Modern data engineering practices for creating efficient AI-driven applications at enterprise scale&#34; width=&#34;220&#34;&gt;
+&lt;p&gt;My more recent writing focuses on Oracle Database AI capabilities, including vector search, ONNX workflows, semantic retrieval, and implementation patterns for modern AI-enabled applications.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Building a Local Oracle Database 26ai Free Lab with Docker on Windows</title>
+      <link>http://localhost:1313/assoudi-blog/posts/building-local-oracle-database-26ai-free-lab/</link>
+      <pubDate>Sun, 05 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/assoudi-blog/posts/building-local-oracle-database-26ai-free-lab/</guid>
+      <description>A practical local setup for validating Oracle AI code, testing vector-search workflows, and building a repeatable Oracle Database 26ai Free experimentation environment on Windows with Docker.</description>
+    </item>
+    <item>
+      <title>Resources</title>
+      <link>http://localhost:1313/assoudi-blog/resources/</link>
+      <pubDate>Sun, 05 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/assoudi-blog/resources/</guid>
+      <description>&lt;p&gt;This page gathers selected technical resources related to my work on Oracle + AI.&lt;/p&gt;
+&lt;p&gt;Over time, it will include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GitHub repositories&lt;/li&gt;
+&lt;li&gt;Hugging Face models and datasets&lt;/li&gt;
+&lt;li&gt;technical walkthroughs and videos&lt;/li&gt;
+&lt;li&gt;companion resources for articles&lt;/li&gt;
+&lt;li&gt;implementation templates and reference material&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;external-profiles&#34;&gt;External profiles&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;GitHub&lt;/li&gt;
+&lt;li&gt;Hugging Face&lt;/li&gt;
+&lt;li&gt;LinkedIn&lt;/li&gt;
+&lt;li&gt;Typica.ai&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Subscribe</title>
+      <link>http://localhost:1313/assoudi-blog/subscribe/</link>
+      <pubDate>Sun, 05 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/assoudi-blog/subscribe/</guid>
+      <description>&lt;p&gt;If you would like to receive future articles and updates on Oracle AI, vector search, ONNX workflows, and enterprise implementation patterns, a newsletter option will be available here soon.&lt;/p&gt;
+&lt;p&gt;In the meantime, you can follow my work through this blog and my public channels.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Welcome to assoudi.blog</title>
+      <link>http://localhost:1313/assoudi-blog/posts/welcome-to-assoudi-blog/</link>
+      <pubDate>Sun, 05 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/assoudi-blog/posts/welcome-to-assoudi-blog/</guid>
+      <description>Why I launched assoudi.blog and what I will publish here.</description>
+    </item>
+  </channel>
+</rss>
