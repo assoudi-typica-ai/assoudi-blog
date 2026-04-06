@@ -1,2 +1,4 @@
 *.lock
-public/
+public/*
+public/index.json
+public/index.json
