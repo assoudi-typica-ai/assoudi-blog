@@ -27,12 +27,13 @@
             <div style="margin-top:16px; display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
 
                 <div style="margin-top:14px; font-size:1rem; font-weight:500; line-height:1.5; color:var(--primary);">
-                    <strong>Hicham Assoudi, Ph.D.</strong> ·  Consultant · Researcher · Author
+                    <strong>By Hicham Assoudi, Ph.D.</strong> ·  Consultant · Researcher · Author
                 </div>
 
-                
-                <a href="/about/" class="about-btn">About me</a>
-                {{ partial "social_icons.html" (dict "align" site.Params.homeInfoParams.AlignSocialIconsTo) }}
+                <div>
+                    <a href="/about/" class="about-btn">About me</a>
+                    {{ partial "social_icons.html" (dict "align" site.Params.homeInfoParams.AlignSocialIconsTo) }}
+                </div>
 
                 
             </div>

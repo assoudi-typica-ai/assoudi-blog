@@ -170,12 +170,10 @@ By Hicham Assoudi — Oracle ACE, PhD in AI, researcher, and author.
 
 [params.homeInfoParams]
 Title = "Oracle AI"
-subtitle  = "<strong>OOOOOOOPractical patterns, hands-on code, and step-by-step guidance</strong><br><span style='opacity:0.82;'>for building with Oracle AI in real enterprise settings.</span>"
-
 #Content = "I'm Hicham Assoudi — Oracle ACE, PhD in AI, author, and founder of Typica.ai. 25 years in the Oracle ecosystem. I write about what actually works: OCI, vector search, NLP, and the architecture decisions that matter for enterprise AI."
 #Content = "If you work with Oracle and want to apply AI without hype or guesswork, this site is for you. I share practical guidance on Oracle AI to help you make better implementation decisions in real enterprise environments. I’m Hicham Assoudi, Oracle ACE, PhD in AI, Researcher, and Published author, with a long career in Oracle technical consulting."
 #Content = "If you work with Oracle and are looking for practical, enterprise-focused guidance on AI, this site is for you. I write about Oracle AI, and the architecture decisions that matter in real AI implementations, with the goal of helping you make better choices and accelerate your path from experimentation to execution. I’m Hicham Assoudi, Oracle ACE, PhD in AI, researcher, published author, and longtime Oracle technical consultant."
-Content = "<strong>Practical patterns, hands-on code, and step-by-step guidance</strong>"
+Content = "Practical patterns, hands-on code, and step-by-step guidance"
 
 imageUrl = "/assoudi-blog/images/hicham1.jpg"
 
