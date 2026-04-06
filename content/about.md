@@ -4,8 +4,9 @@ date: 2026-04-05
 draft: false
 ---
 
-Hey I'm Hicham Assoudi. 
-I help Oracle practitioners, architects, and enterprise teams make better AI implementation decisions by combining Oracle depth, real experiments, and research-grade evaluation.
+Hey I'm **Hicham Assoudi**. 
+
+I help Oracle practitioners, architects, developers, dbas, and enterprises make better AI implementation decisions by combining Oracle depth, real experiments, and research-grade evaluation.
 
 I’m an Oracle consultant, AI researcher, and technical author.
 
