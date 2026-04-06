@@ -2,52 +2,52 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on Hicham Assoudi</title>
-    <link>http://localhost:1313/assoudi-blog/tags/</link>
+    <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on Hicham Assoudi</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Sun, 05 Apr 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/assoudi-blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>26ai</title>
-      <link>http://localhost:1313/assoudi-blog/tags/26ai/</link>
+      <link>http://localhost:1313/tags/26ai/</link>
       <pubDate>Sun, 05 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/assoudi-blog/tags/26ai/</guid>
+      <guid>http://localhost:1313/tags/26ai/</guid>
       <description></description>
     </item>
     <item>
       <title>Ai</title>
-      <link>http://localhost:1313/assoudi-blog/tags/ai/</link>
+      <link>http://localhost:1313/tags/ai/</link>
       <pubDate>Sun, 05 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/assoudi-blog/tags/ai/</guid>
+      <guid>http://localhost:1313/tags/ai/</guid>
       <description></description>
     </item>
     <item>
       <title>Docker</title>
-      <link>http://localhost:1313/assoudi-blog/tags/docker/</link>
+      <link>http://localhost:1313/tags/docker/</link>
       <pubDate>Sun, 05 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/assoudi-blog/tags/docker/</guid>
+      <guid>http://localhost:1313/tags/docker/</guid>
       <description></description>
     </item>
     <item>
       <title>Oracle</title>
-      <link>http://localhost:1313/assoudi-blog/tags/oracle/</link>
+      <link>http://localhost:1313/tags/oracle/</link>
       <pubDate>Sun, 05 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/assoudi-blog/tags/oracle/</guid>
+      <guid>http://localhost:1313/tags/oracle/</guid>
       <description></description>
     </item>
     <item>
       <title>Oracle-Ai</title>
-      <link>http://localhost:1313/assoudi-blog/tags/oracle-ai/</link>
+      <link>http://localhost:1313/tags/oracle-ai/</link>
       <pubDate>Sun, 05 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/assoudi-blog/tags/oracle-ai/</guid>
+      <guid>http://localhost:1313/tags/oracle-ai/</guid>
       <description></description>
     </item>
     <item>
       <title>Vector-Search</title>
-      <link>http://localhost:1313/assoudi-blog/tags/vector-search/</link>
+      <link>http://localhost:1313/tags/vector-search/</link>
       <pubDate>Sun, 05 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/assoudi-blog/tags/vector-search/</guid>
+      <guid>http://localhost:1313/tags/vector-search/</guid>
       <description></description>
     </item>
   </channel>

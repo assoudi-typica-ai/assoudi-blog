@@ -1,4 +1,6 @@
-baseURL = "https://assoudi-typica-ai.github.io/assoudi-blog/"
+#baseURL = "https://assoudi-typica-ai.github.io/assoudi-blog/"
+baseURL = "https://assoudi.blog/"
+
 title = "Hicham Assoudi"
 theme = "PaperMod"
 defaultContentLanguage = "en"

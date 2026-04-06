@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on هشام عسودي</title>
-    <link>http://localhost:1313/assoudi-blog/ar/tags/</link>
+    <link>http://localhost:1313/ar/tags/</link>
     <description>Recent content in Tags on هشام عسودي</description>
     <generator>Hugo</generator>
     <language>ar</language>
-    <atom:link href="http://localhost:1313/assoudi-blog/ar/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/ar/tags/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
