@@ -177,7 +177,7 @@ Title = "Oracle AI"
 #Content = "If you work with Oracle and are looking for practical, enterprise-focused guidance on AI, this site is for you. I write about Oracle AI, and the architecture decisions that matter in real AI implementations, with the goal of helping you make better choices and accelerate your path from experimentation to execution. I’m Hicham Assoudi, Oracle ACE, PhD in AI, researcher, published author, and longtime Oracle technical consultant."
 Content = "Practical patterns, hands-on code, and step-by-step guidance"
 
-imageUrl = "/assoudi-blog/images/hicham1.jpg"
+imageUrl = "/images/hicham1.jpg"
 
 [params.assets]
 favicon = "/favicon.ico"
