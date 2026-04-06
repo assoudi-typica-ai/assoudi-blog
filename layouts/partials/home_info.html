@@ -9,7 +9,7 @@
             {{- end }}
 
             <div style="margin-top:10px;">
-                <img src='{{ "/assoudi-blog/images/Oracle_ACE_Program_ACE_all-black_rgb.png" | relURL }}'
+                <img src='{{ "/assoudi-blog/images/S+T3_ACEAssociate_rgb.png" | relURL }}'
                      alt="Oracle ACE"
                      style="height:40px; width:auto;" />
             </div>
@@ -31,7 +31,7 @@
                 </div>
 
                 <div>
-                    <a href="/about/" class="about-btn">About me</a>
+                    <a href='{{ "/assoudi-blog/about/" | relURL }}' class="about-btn">About me</a>
                     {{ partial "social_icons.html" (dict "align" site.Params.homeInfoParams.AlignSocialIconsTo) }}
                 </div>
 
