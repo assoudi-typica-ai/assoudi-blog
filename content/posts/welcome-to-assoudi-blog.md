@@ -9,6 +9,6 @@ categories: ["articles"]
 
 Welcome to assoudi.blog.
 
-This is where I publish practical, technically grounded writing on Oracle AI, vector search, ONNX workflows, enterprise architecture, and benchmark-driven implementation patterns.
+This is where I publish practical, technically grounded writing on Oracle AI.
 
 My goal is simple: useful Oracle + AI content for practitioners, architects, and technical leaders.
