@@ -1,0 +1,254 @@
+baseURL = "https://assoudi-typica-ai.github.io/assoudi-blog/"
+title = "Hicham Assoudi"
+theme = "PaperMod"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+enableRobotsTXT = true
+enableEmoji = true
+buildDrafts = false
+buildFuture = false
+
+[pagination]
+pagerSize = 10
+
+[minify]
+disableXML = true
+minifyOutput = true
+
+# ─── Menu ─────────────────────────────────────────────────────────────────────
+
+[[menu.main]]
+identifier = "posts"
+name = "Posts"
+url = "/posts/"
+weight = 10
+
+[[menu.main]]
+identifier = "books"
+name = "Books"
+url = "/books/"
+weight = 20
+
+[[menu.main]]
+identifier = "resources"
+name = "Resources"
+url = "/resources/"
+weight = 30
+
+[[menu.main]]
+identifier = "subscribe"
+name = "Subscribe"
+url = "/subscribe/"
+weight = 40
+
+[[menu.main]]
+identifier = "about"
+name = "About"
+url = "/about/"
+weight = 50
+
+# ─── Languages ────────────────────────────────────────────────────────────────
+
+[languages.en]
+languageName = "English"
+languageCode = "en"
+weight = 1
+title = "Hicham Assoudi"
+
+[languages.en.params]
+description = "Oracle Cloud Architect, AI Researcher, and Author. Practical writing on OCI, vector search, and enterprise AI."
+
+[languages.fr]
+languageName = "Français"
+languageCode = "fr"
+weight = 2
+title = "Hicham Assoudi"
+contentDir = "content/fr"
+
+[languages.fr.params]
+description = "Architecte Oracle Cloud & Expert IA — OCI, NLP et IA d'entreprise"
+
+[[languages.fr.menus.main]]
+identifier = "posts"
+name = "Articles"
+url = "/fr/posts/"
+weight = 10
+
+[[languages.fr.menus.main]]
+identifier = "about"
+name = "À propos"
+url = "/fr/about/"
+weight = 20
+
+[[languages.fr.menus.main]]
+identifier = "books"
+name = "Livres"
+url = "/fr/books/"
+weight = 30
+
+[[languages.fr.menus.main]]
+identifier = "resources"
+name = "Ressources"
+url = "/fr/resources/"
+weight = 40
+
+[[languages.fr.menus.main]]
+identifier = "subscribe"
+name = "S'abonner"
+url = "/fr/subscribe/"
+weight = 50
+
+[languages.ar]
+languageName = "العربية"
+languageCode = "ar"
+weight = 3
+title = "هشام عسودي"
+contentDir = "content/ar"
+languageDirection = "rtl"
+
+[languages.ar.params]
+description = "مهندس Oracle السحابي وخبير الذكاء الاصطناعي"
+
+[[languages.ar.menus.main]]
+identifier = "posts"
+name = "المقالات"
+url = "/ar/posts/"
+weight = 10
+
+[[languages.ar.menus.main]]
+identifier = "about"
+name = "عن الكاتب"
+url = "/ar/about/"
+weight = 20
+
+[[languages.ar.menus.main]]
+identifier = "books"
+name = "الكتب"
+url = "/ar/books/"
+weight = 30
+
+[[languages.ar.menus.main]]
+identifier = "resources"
+name = "الموارد"
+url = "/ar/resources/"
+weight = 40
+
+[[languages.ar.menus.main]]
+identifier = "subscribe"
+name = "اشترك"
+url = "/ar/subscribe/"
+weight = 50
+
+# ─── Global params ────────────────────────────────────────────────────────────
+
+[params]
+env = "production"
+author = "Hicham Assoudi"
+defaultTheme = "auto"
+disableThemeToggle = false
+ShowReadingTime = true
+ShowShareButtons = true
+ShowPostNavLinks = true
+ShowBreadCrumbs = true
+ShowCodeCopyButtons = true
+ShowToc = true
+TocOpen = false
+ShowWordCount = false
+ShowRssButtonInSectionTermList = true
+UseHugoToc = true
+comments = false
+hidemeta = false
+hideSummary = false
+heroText = """
+Oracle AI, grounded in enterprise reality.
+Insights on architecture, implementation, and what actually works.
+By Hicham Assoudi — Oracle ACE, PhD in AI, researcher, and author.
+"""
+
+# Google Analytics — uncomment and add your GA4 ID
+# googleAnalyticsID = "G-XXXXXXXXXX"
+
+[params.homeInfoParams]
+Title = "Oracle AI"
+subtitle  = "<strong>OOOOOOOPractical patterns, hands-on code, and step-by-step guidance</strong><br><span style='opacity:0.82;'>for building with Oracle AI in real enterprise settings.</span>"
+
+#Content = "I'm Hicham Assoudi — Oracle ACE, PhD in AI, author, and founder of Typica.ai. 25 years in the Oracle ecosystem. I write about what actually works: OCI, vector search, NLP, and the architecture decisions that matter for enterprise AI."
+#Content = "If you work with Oracle and want to apply AI without hype or guesswork, this site is for you. I share practical guidance on Oracle AI to help you make better implementation decisions in real enterprise environments. I’m Hicham Assoudi, Oracle ACE, PhD in AI, Researcher, and Published author, with a long career in Oracle technical consulting."
+#Content = "If you work with Oracle and are looking for practical, enterprise-focused guidance on AI, this site is for you. I write about Oracle AI, and the architecture decisions that matter in real AI implementations, with the goal of helping you make better choices and accelerate your path from experimentation to execution. I’m Hicham Assoudi, Oracle ACE, PhD in AI, researcher, published author, and longtime Oracle technical consultant."
+Content = "<strong>Practical patterns, hands-on code, and step-by-step guidance</strong>"
+
+imageUrl = "/assoudi-blog/images/hicham1.jpg"
+
+[params.assets]
+favicon = "/favicon.ico"
+favicon16x16 = "/favicon-16x16.png"
+favicon32x32 = "/favicon-32x32.png"
+apple_touch_icon = "/apple-touch-icon.png"
+
+[params.label]
+text = "assoudi.blog"
+
+[[params.socialIcons]]
+name = "linkedin"
+url = "https://www.linkedin.com/in/assoudi/"
+
+[[params.socialIcons]]
+name = "x"
+url = "https://x.com/hassoudi"
+
+[[params.socialIcons]]
+name = "github"
+url = "https://github.com/assoudi-typica-ai"
+
+[[params.socialIcons]]
+name = "huggingface.co"
+url = "https://huggingface.co/hassoudi"
+
+[[params.socialIcons]]
+name = "oracle"
+url = "https://ace.oracle.com/ords/ace/profile/qsb5vk612z"
+
+[[params.socialIcons]]
+name = "googlescholar"
+url = "https://scholar.google.com/citations?user=iZ9fvoQAAAAJ&hl=fr"
+
+
+[params.cover]
+hidden = false
+hiddenInList = false
+hiddenInSingle = false
+
+[params.fuseOpts]
+isCaseSensitive = false
+shouldSort = true
+location = 0
+distance = 1000
+threshold = 0.4
+minMatchCharLength = 0
+limit = 10
+keys = ["title", "permalink", "summary", "content"]
+
+# ─── Taxonomy ─────────────────────────────────────────────────────────────────
+
+[taxonomies]
+tag = "tags"
+category = "categories"
+series = "series"
+
+# ─── Output formats ───────────────────────────────────────────────────────────
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+
+# ─── Markup ───────────────────────────────────────────────────────────────────
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[markup.highlight]
+noClasses = false
+anchorLineNos = true
+codeFences = true
+guessSyntax = true
+lineNos = true
+style = "monokai"

@@ -1,0 +1,42 @@
+{{- with site.Params.homeInfoParams }}
+<article class="first-entry home-info">
+    <div style="display:flex; align-items:flex-start; gap:28px; flex-wrap:wrap;">
+        
+        <div style="display:flex; flex-direction:column; align-items:center; flex-shrink:0;">
+            {{- with site.Params.homeInfoParams.imageUrl }}
+            <img src="{{ . }}" alt="Hicham Assoudi"
+                 style="width:84px; height:84px; border-radius:50%; object-fit:cover; margin-top:6px;" />
+            {{- end }}
+
+            <div style="margin-top:10px;">
+                <img src='{{ "/assoudi-blog/images/Oracle_ACE_Program_ACE_all-black_rgb.png" | relURL }}'
+                     alt="Oracle ACE"
+                     style="height:40px; width:auto;" />
+            </div>
+        </div>
+
+        <div style="flex:1; min-width:220px;">
+            <header class="entry-header">
+                <h1>{{ .Title | markdownify }}</h1>
+            </header>
+            <header class="entry-content">
+                <h2>{{ .Content | markdownify }}</h2>
+            </header>
+
+
+            <div style="margin-top:16px; display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+
+                <div style="margin-top:14px; font-size:1rem; font-weight:500; line-height:1.5; color:var(--primary);">
+                    <strong>Hicham Assoudi, Ph.D.</strong> ·  Consultant · Researcher · Author
+                </div>
+
+                
+                <a href="/about/" class="about-btn">About me</a>
+                {{ partial "social_icons.html" (dict "align" site.Params.homeInfoParams.AlignSocialIconsTo) }}
+
+                
+            </div>
+        </div>
+    </div>
+</article>
+{{- end -}}
