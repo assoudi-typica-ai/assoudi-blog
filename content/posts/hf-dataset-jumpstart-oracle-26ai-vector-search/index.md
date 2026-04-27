@@ -1,5 +1,5 @@
 ---
-title: Using a HuggingFace Dataset to Jump-Start Oracle 26ai Vector Search Experiments
+title: Jump-Start 26ai Vector Search Experiments with HuggingFace Datasets
 date: 2026-04-26T09:00:00-04:00
 draft: false
 description: How I stopped building throwaway test data from scratch and used a HuggingFace dataset to get a fully vectorized Oracle 26ai table — with CLIP image embeddings — in a single session.
