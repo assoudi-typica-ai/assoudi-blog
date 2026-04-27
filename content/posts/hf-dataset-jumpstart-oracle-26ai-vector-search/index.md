@@ -1,40 +1,32 @@
 ---
-title: "Using a HuggingFace Dataset to Jump-Start Oracle 26ai Vector Search Experiments"
+title: Using a HuggingFace Dataset to Jump-Start Oracle 26ai Vector Search Experiments
 date: 2026-04-26T09:00:00-04:00
-draft: true
-
-description: "How I stopped building throwaway test data from scratch and used a HuggingFace dataset to get a fully vectorized Oracle 26ai table — with CLIP image embeddings — in a single session."
-
-summary: "After the local Oracle 26ai lab was running, the first experiment I wanted to build was a car insurance claims PoC based on semantic image and text search. The bottleneck was not Oracle — it was data. I tried scraping. It failed. This post is about what I did instead and why HuggingFace turned out to be the right call."
-
+draft: false
+description: How I stopped building throwaway test data from scratch and used a HuggingFace dataset to get a fully vectorized Oracle 26ai table — with CLIP image embeddings — in a single session.
+summary: After the local Oracle 26ai lab was running, the first experiment I wanted to build was a car insurance claims PoC based on semantic image and text search. The bottleneck was not Oracle — it was data. I tried scraping. It failed. This post is about what I did instead and why HuggingFace turned out to be the right call.
 tags:
-  - "oracle ai"
-  - "oracle database 26ai"
-  - "onnx"
-  - "vector-search"
-  - "multimodal"
-  - "huggingface"
-  - "implementation-guide"
-
+  - oracle ai
+  - oracle database 26ai
+  - onnx
+  - vector-search
+  - multimodal
+  - huggingface
+  - implementation-guide
 categories:
-  - "Implementation Guides"
-
+  - Implementation Guides
 series:
-  - "Oracle 26ai Pre-built ONNX Models"
-
+  - Oracle 26ai Pre-built ONNX Models
 cover:
-  image: "docx_images/img_02.png"
-  alt: "Path from HuggingFace dataset through Python import to Oracle 26ai in-database CLIP embeddings and vector similarity search"
-  caption: "From open dataset to a queryable vector table in Oracle 26ai — without building or maintaining an external embedding pipeline."
+  image: docx_images/img_02.png
+  alt: Path from HuggingFace dataset through Python import to Oracle 26ai in-database CLIP embeddings and vector similarity search
+  caption: From open dataset to a queryable vector table in Oracle 26ai — without building or maintaining an external embedding pipeline.
   relative: true
-
 ShowToc: true
 TocOpen: true
 ShowReadingTime: true
 ShowBreadCrumbs: true
 ShowPostNavLinks: true
 ShowCodeCopyButtons: true
-
 ---
 
 ## The problem this solves
