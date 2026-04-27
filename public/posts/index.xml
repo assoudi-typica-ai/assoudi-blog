@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Hicham Assoudi</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 05 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 26 Apr 2026 09:00:00 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Using a HuggingFace Dataset to Jump-Start Oracle 26ai Vector Search Experiments</title>
+      <link>http://localhost:1313/posts/hf-dataset-jumpstart-oracle-26ai-vector-search/</link>
+      <pubDate>Sun, 26 Apr 2026 09:00:00 -0400</pubDate>
+      <guid>http://localhost:1313/posts/hf-dataset-jumpstart-oracle-26ai-vector-search/</guid>
+      <description>How I stopped building throwaway test data from scratch and used a HuggingFace dataset to get a fully vectorized Oracle 26ai table — with CLIP image embeddings — in a single session.</description>
+    </item>
     <item>
       <title>Building a Local Oracle Database 26ai Free Lab with Docker on Windows</title>
       <link>http://localhost:1313/posts/building-local-oracle-database-26ai-free-lab/</link>

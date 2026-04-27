@@ -23,7 +23,7 @@ series:
   - "Oracle 26ai Pre-built ONNX Models"
 
 cover:
-  image: "images/hf-jumpstart-oracle-26ai-cover.png"
+  image: "docx_images/img_02.png"
   alt: "Path from HuggingFace dataset through Python import to Oracle 26ai in-database CLIP embeddings and vector similarity search"
   caption: "From open dataset to a queryable vector table in Oracle 26ai — without building or maintaining an external embedding pipeline."
   relative: true
