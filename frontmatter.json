@@ -7,41 +7,104 @@
       "previewPath": null,
       "fields": [
         {
-          "title": "Title",
+          "title": "title",
           "name": "title",
           "type": "string"
         },
         {
-          "title": "Description",
-          "name": "description",
-          "type": "string"
-        },
-        {
-          "title": "Publishing date",
+          "title": "date",
           "name": "date",
-          "type": "datetime",
-          "default": "{{now}}",
-          "isPublishDate": true
+          "type": "datetime"
         },
         {
-          "title": "Content preview",
-          "name": "preview",
-          "type": "image"
-        },
-        {
-          "title": "Is in draft",
+          "title": "draft",
           "name": "draft",
           "type": "draft"
         },
         {
-          "title": "Tags",
+          "title": "description",
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "title": "summary",
+          "name": "summary",
+          "type": "string"
+        },
+        {
+          "title": "tags",
           "name": "tags",
           "type": "tags"
         },
         {
-          "title": "Categories",
+          "title": "categories",
           "name": "categories",
           "type": "categories"
+        },
+        {
+          "title": "series",
+          "name": "series",
+          "type": "choice",
+          "choices": [
+            "Oracle 26ai Pre-built ONNX Models"
+          ]
+        },
+        {
+          "title": "cover",
+          "name": "cover",
+          "type": "fields",
+          "fields": [
+            {
+              "title": "image",
+              "name": "image",
+              "type": "image"
+            },
+            {
+              "title": "alt",
+              "name": "alt",
+              "type": "string"
+            },
+            {
+              "title": "caption",
+              "name": "caption",
+              "type": "string"
+            },
+            {
+              "title": "relative",
+              "name": "relative",
+              "type": "boolean"
+            }
+          ]
+        },
+        {
+          "title": "ShowToc",
+          "name": "ShowToc",
+          "type": "boolean"
+        },
+        {
+          "title": "TocOpen",
+          "name": "TocOpen",
+          "type": "boolean"
+        },
+        {
+          "title": "ShowReadingTime",
+          "name": "ShowReadingTime",
+          "type": "boolean"
+        },
+        {
+          "title": "ShowBreadCrumbs",
+          "name": "ShowBreadCrumbs",
+          "type": "boolean"
+        },
+        {
+          "title": "ShowPostNavLinks",
+          "name": "ShowPostNavLinks",
+          "type": "boolean"
+        },
+        {
+          "title": "ShowCodeCopyButtons",
+          "name": "ShowCodeCopyButtons",
+          "type": "boolean"
         }
       ]
     }
