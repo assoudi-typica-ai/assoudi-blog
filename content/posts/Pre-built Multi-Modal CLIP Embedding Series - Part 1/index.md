@@ -2,7 +2,7 @@
 title: "HuggingFace Datasets in Oracle 26ai: Jump-Starting CLIP Vector Search Experiments"
 date: 2026-04-29T09:00:00-04:00
 draft: false
-description: How to go from zero data to a fully structured Oracle 26ai table — with images, text descriptions, and an empty VECTOR column — using a HuggingFace dataset, in one session, without building a data engineering pipeline.
+description: How to go from zero data to a fully structured Oracle 26ai table, with images, text descriptions, and an empty VECTOR column, using a HuggingFace dataset, in one session, without building a data engineering pipeline.
 summary: Before experimenting with CLIP-based image and text similarity in Oracle 26ai, you need data that is real enough to produce meaningful results. Oracle's documentation examples are toy-scale; production claims data isn't ready for a local POC. HuggingFace is the answer. This post shows exactly how to import tahaman/DamageCarDataset into Oracle 26ai and wire up the table structure that the entire CLIP experiment series runs on.
 tags:
   - oracle ai
@@ -103,15 +103,15 @@ On the Oracle side, nothing happens in this post except receiving the data. No P
 
 ## Step-by-step
 
-> Full code: `clip_demo_setup.sql`, `clip_demo_import_dataset.py`
+> Full code: [github.com/assoudi-typica-ai/pre-built-multi-modal-clip-embedding-series](https://github.com/assoudi-typica-ai/pre-built-multi-modal-clip-embedding-series)
 > This section covers the key steps and decisions. Not every line.
 
-### Step 1 — Create the database user and wire up the ONNX directory
+### Step 1, Create the database user and wire up the ONNX directory
 
 `clip_demo_setup.sql` runs as SYS and does three things: creates the `demo_vec` user, grants `CREATE MINING MODEL` (required for `DBMS_VECTOR.LOAD_ONNX_MODEL` in the next post), and creates the `ONNX_TMP` Oracle `DIRECTORY` object pointing to `/tmp` inside the container. Creating it now avoids a setup dependency later.
 
 ```sql
--- clip_demo_setup.sql — run as SYS against FREEPDB1
+-- clip_demo_setup.sql, run as SYS against FREEPDB1
 CREATE USER demo_vec IDENTIFIED BY demo_vec
   DEFAULT TABLESPACE USERS QUOTA UNLIMITED ON USERS;
 
@@ -132,7 +132,7 @@ docker exec -i oracle-26ai-free \
 
 ---
 
-### Step 2 — Create the table and import the HuggingFace dataset
+### Step 2, Create the table and import the HuggingFace dataset
 
 This step creates the Oracle table and populates it with the DamageCarDataset, the foundation for every post in this series.
 
@@ -151,7 +151,7 @@ python clip_demo_import_dataset.py --dry-run
 ```
 
 ```
-Inferred schema — damage_car_table
+Inferred schema, damage_car_table
   Column                   HF Feature             Oracle Type
   ------------------------ ---------------------- ----------------------
   id                       (identity)             NUMBER PK
@@ -166,7 +166,7 @@ The type mapping is handled by `_feature_to_oracle`, which returns both an Oracl
 
 ```python
 _VALUE_TYPE_MAP = {
-    "string": "VARCHAR2(4000)",  # refined per-column by _analyze_string_cols
+    "string": "VARCHAR2(4000)", # refined per-column by _analyze_string_cols
     "int32": "NUMBER", "int64": "NUMBER",
     "float32": "BINARY_FLOAT", "float64": "BINARY_DOUBLE",
     "bool": "NUMBER(1)",
@@ -295,9 +295,7 @@ HuggingFace datasets are not a production data strategy. They are an experiment 
 
 | Asset | Link |
 |---|---|
-| `clip_demo_setup.sql` | DB user creation, grants, and ONNX directory setup |
-| `clip_demo_import_dataset.py` | HuggingFace dataset download, schema inference, and Oracle table insert |
-| Oracle ML AI Models catalog | [OCI Object Storage model catalog](https://adwc4pm.objectstorage.us-ashburn-1.oci.customer-oci.com/p/fU1V-voY2VBhhqMPjhCC57Up77ROK9u6GN_j3-uGi_EzIdHm9XDn-RfnZS5bV0cN/n/adwc4pm/b/OML-ai-models/o/Oracle%20Machine%20Learning%20AI%20models.htm) |
+| GitHub repo (full code) | [assoudi-typica-ai/pre-built-multi-modal-clip-embedding-series](https://github.com/assoudi-typica-ai/pre-built-multi-modal-clip-embedding-series) |
 | Series post #1 | [Building a Local Oracle 26ai Free Lab with Docker on Windows](https://assoudi.blog/posts/building-local-oracle-database-26ai-free-lab/) |
 
 ---
