@@ -62,7 +62,7 @@ The pattern separates two concerns that are usually conflated: data sourcing and
 On the data side: the `datasets` Python library pulls `tahaman/DamageCarDataset` in one call, giving 150 rows of structured Parquet data with embedded images and text descriptions. The script inspects `ds.features` at runtime to infer Oracle column types and generate the `CREATE TABLE` DDL automatically; no table definition is ever written by hand. It then loads all rows into Oracle using `executemany`. The table schema holds everything the CLIP series needs: a `BLOB` column for images, a `VARCHAR2` column for text descriptions sized by sampling actual values, and a `VECTOR` column left `NULL` at this stage, ready for embedding generation in the next post.
 
 
-![Hugging Face dataset tahaman/DamageCarDataset - Dataset Viewer](../images/img_01.png)
+![Hugging Face dataset tahaman/DamageCarDataset - Dataset Viewer](./images/img_01.png)
 *Hugging Face dataset tahaman/DamageCarDataset*
 
 
@@ -70,7 +70,7 @@ On the Oracle side, nothing happens in this post except receiving the data. No P
 
 ### Architecture
 
-![Oracle 26ai AI Vector Search flow: unstructured data and ONNX model feed an in-database embedding engine, producing vectors queryable with SQL](../images/img_02.png)
+![Oracle 26ai AI Vector Search flow: unstructured data and ONNX model feed an in-database embedding engine, producing vectors queryable with SQL](./images/img_02.png)
 *Data sourcing and Oracle AI work are independent operations. HuggingFace populates the table once; all embedding and retrieval work runs inside Oracle SQL.*
 
 **What lives inside Oracle after this post:**
