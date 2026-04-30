@@ -1,10 +1,8 @@
 ---
-title: "Subscribe"
+title: Newsletter
 date: 2026-04-05
 draft: false
 ---
-
-# Newsletter
 
 I share articles, experiments, and architecture patterns around Oracle Database 26ai, AI Vector Search, ONNX models, OCI AI, multimodal workflows, and real implementation decisions.
 
