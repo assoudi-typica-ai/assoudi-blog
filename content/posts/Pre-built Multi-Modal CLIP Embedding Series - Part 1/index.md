@@ -1,42 +1,34 @@
 ---
 title: "HuggingFace Datasets in Oracle 26ai: Jump-Starting CLIP Vector Search Experiments"
 date: 2026-04-29T09:00:00-04:00
-draft: true
-
-description: "How to go from zero data to a fully structured Oracle 26ai table — with images, text descriptions, and an empty VECTOR column — using a HuggingFace dataset, in one session, without building a data engineering pipeline."
-
-summary: "Before experimenting with CLIP-based image and text similarity in Oracle 26ai, you need data that is real enough to produce meaningful results. Oracle's documentation examples are toy-scale; production claims data isn't ready for a local POC. HuggingFace is the answer. This post shows exactly how to import tahaman/DamageCarDataset into Oracle 26ai and wire up the table structure that the entire CLIP experiment series runs on."
-
+draft: false
+description: How to go from zero data to a fully structured Oracle 26ai table — with images, text descriptions, and an empty VECTOR column — using a HuggingFace dataset, in one session, without building a data engineering pipeline.
+summary: Before experimenting with CLIP-based image and text similarity in Oracle 26ai, you need data that is real enough to produce meaningful results. Oracle's documentation examples are toy-scale; production claims data isn't ready for a local POC. HuggingFace is the answer. This post shows exactly how to import tahaman/DamageCarDataset into Oracle 26ai and wire up the table structure that the entire CLIP experiment series runs on.
 tags:
-  - "oracle ai"
-  - "oracle database 26ai"
-  - "onnx"
-  - "vector-search"
-  - "clip"
-  - "visual-similarity"
-  - "huggingface"
-  - "multimodal"
-  - "implementation-guide"
-
+  - oracle ai
+  - oracle database 26ai
+  - onnx
+  - vector-search
+  - clip
+  - visual-similarity
+  - huggingface
+  - multimodal
+  - implementation-guide
 categories:
-  - "Implementation Guides"
-
+  - Implementation Guides
 series:
-  - "Oracle 26ai Pre-built ONNX Models"
-
+  - Oracle 26ai Pre-built ONNX Models
 cover:
-  image: "images/banner.png"
-  alt: "Path from HuggingFace DamageCarDataset through Python import to an Oracle 26ai table with BLOB, CLOB, and empty VECTOR column, ready for CLIP embedding"
-  caption: "Data sourcing and Oracle AI work are separate steps. HuggingFace handles the first; Oracle handles everything after."
+  image: images/banner.png
+  alt: Path from HuggingFace DamageCarDataset through Python import to an Oracle 26ai table with BLOB, CLOB, and empty VECTOR column, ready for CLIP embedding
+  caption: Data sourcing and Oracle AI work are separate steps. HuggingFace handles the first; Oracle handles everything after.
   relative: true
-
 ShowToc: true
 TocOpen: true
 ShowReadingTime: true
 ShowBreadCrumbs: true
 ShowPostNavLinks: true
 ShowCodeCopyButtons: true
-
 ---
 
 ## The problem this solves
