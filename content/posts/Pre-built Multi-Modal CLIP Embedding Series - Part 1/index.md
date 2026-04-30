@@ -234,48 +234,13 @@ Expected: rows for `hf_dataset`, `hf_formats`, `hf_libraries`, `hf_modalities`, 
 
 ---
 
-## What I observed
+## Takeaways
 
-**Schema inference from `ds.features` removes the manual DDL step, and VARCHAR2 sizing makes it accurate, not just convenient.** The script inspects the HuggingFace feature map at runtime and generates the `CREATE TABLE` DDL automatically: `Image()` maps to `BLOB`, `ClassLabel` to `VARCHAR2(255)`, `Value('int32')` to `NUMBER`. For `Value('string')` columns, the default would be `CLOB`, but the script runs a pre-pass over every row to measure actual string lengths, then picks `VARCHAR2(255)`, `VARCHAR2(4000)`, or `CLOB` based on what the data actually contains. For DamageCarDataset, `label` comes out as `VARCHAR2(255)` and `description` as `VARCHAR2(4000)`. Defaulting everything to `CLOB` would silently close off future indexing options.
+**Schema inference from `ds.features` removes the manual DDL step, and VARCHAR2 sizing makes it accurate, not just convenient.** The script inspects the HuggingFace feature map at runtime and generates the `CREATE TABLE` DDL automatically.
 
-**Python-external import has concrete tradeoffs against Oracle-native alternatives.** The `oracledb` thin-mode approach is the correct choice for image datasets because the images in DamageCarDataset are embedded as Arrow binary in Parquet. Oracle's `DBMS_CLOUD.COPY_DATA` can load plain Parquet directly into Oracle tables but does not handle the embedded binary image data without preprocessing. Python's `pillow` is required for image format conversion before Oracle can store them as BLOBs. The rule: if the dataset requires any transformation before storage (image format conversion, encoding, enrichment), Python is the right tool. If the dataset maps cleanly to Oracle column types with no transformation, `DBMS_CLOUD.COPY_DATA` is the simpler path, fully Oracle-native with no external process.
+**Python-external import has concrete tradeoffs against Oracle-native alternatives.** The `oracledb` thin-mode approach is the correct choice for image datasets because the images in DamageCarDataset are embedded as Arrow binary in Parquet. The rule: if the dataset requires any transformation before storage (image format conversion, encoding, enrichment), Python is the right tool. If the dataset maps cleanly to Oracle column types with no transformation, `DBMS_CLOUD.COPY_DATA` is the simpler path, fully Oracle-native with no external process.
 
-**The Oracle catalog ONNX model is not interchangeable with a direct HuggingFace export.** Oracle's ONNX catalog file for CLIP carries metadata that maps input/output node names correctly for `DBMS_VECTOR`. Exporting `openai/clip-vit-base-patch32` with `optimum-cli` produces a file that loads without error but generates incorrect vectors at inference. The failure is silent: the query runs, distances are computed, results are returned, and they are wrong. This is not documented prominently and is the single most time-consuming mistake in this setup. Use the catalog file.
-
-**Oracle 26ai table annotations turn the schema into its own data dictionary entry.** After the import, the script runs `ALTER TABLE ... ANNOTATIONS (ADD hf_dataset '...', ADD hf_modalities 'image, text', ADD hf_formats 'parquet', ...)`, pulling values from the HuggingFace Hub dataset card via the `huggingface_hub` library. The result: `SELECT annotation_name, annotation_value FROM user_annotations_usage WHERE object_name = 'DAMAGE_CAR_TABLE'` returns the dataset provenance, modalities, size category, and license without leaving the database. This matters for repeatability: anyone inheriting the Oracle schema can see exactly where the data came from without reading the import script. One syntax note worth flagging: Oracle annotation names must be unquoted identifiers with the `ADD` keyword (`ADD hf_dataset 'value'`), not string literals (`SET 'hf_dataset' 'value'` raises ORA-11548 and is the most likely failure point when writing annotation DDL by hand).
-
-**`VECTOR_EMBEDDING()` in a bulk `UPDATE` eliminates an entire class of pipeline complexity.** Once the CLIP model is registered in Part 2, one SQL statement processes all 150 images and writes 512-dim vectors directly into the column. No batch size to tune, no Python loop, no round-trip per row. The table structure established here, specifically the `BLOB` column for raw images and the `VECTOR(*, FLOAT32)` column left intentionally `NULL`, is what makes that single-statement embedding generation possible.
-
----
-
-## Limits and trade-offs
-
-| Dimension | This approach | Alternative |
-|---|---|---|
-| Setup complexity | Low: one SQL script, one Python script | Higher: external embedding service or pipeline orchestration |
-| Data flexibility | Limited to what HuggingFace provides publicly | Full control over proprietary or internal data |
-| Model flexibility | Limited to Oracle's ONNX catalog | Any model runnable in Python or callable via API |
-| Oracle-native fit | High: data and model live in the same engine | Low: split ownership between DB and ML runtime |
-| Scale readiness | Valid up to ~100K rows without a vector index | Needs `HNSW` index and partitioning beyond that |
-
-**What this approach does not solve:**
-- Experiments requiring proprietary or confidential data that cannot leave a local container
-- Production ingestion at scale: this is an experiment accelerator, not a data pipeline framework
-- Custom or fine-tuned ONNX models not available in Oracle's catalog
-
----
-
-## When to use this, and when not to
-
-| Your situation | Use this approach? | Why |
-|---|---|---|
-| Starting a new Oracle 26ai vector search experiment | Yes | Fastest path from zero to queryable vectors, no data engineering work |
-| Evaluating Oracle's pre-built CLIP model for domain-specific visual similarity | Yes | DamageCar's four damage classes provide enough visual variety to test CLIP's feature space before any fine-tuning commitment |
-| Building a reproducible tutorial or demo series | Yes | Public dataset means anyone can reproduce the exact same starting state |
-| Benchmarking Oracle AI against another vector store | Yes | Self-contained, nothing external to configure or maintain |
-| Data is proprietary or cannot leave your network | No | HuggingFace requires internet access; adapt the same Oracle steps to internal sources instead |
-| Model not in Oracle's ONNX catalog | No | Oracle metadata wrapper is required; ad-hoc ONNX exports produce silent correctness failures |
-| Production system with millions of rows | Partial | The embedding pattern holds; add a `HNSW` vector index before querying at scale |
+**Oracle 26ai table annotations turn the schema into its own data dictionary entry.** After the import, the script runs `ALTER TABLE ... ANNOTATIONS (ADD hf_dataset '...', ADD hf_modalities 'image, text', ADD hf_formats 'parquet', ...)`, pulling values from the HuggingFace Hub dataset card via the `huggingface_hub` library. This matters for repeatability: anyone inheriting the Oracle schema can see exactly where the data came from without reading the import script.
 
 ---
 
