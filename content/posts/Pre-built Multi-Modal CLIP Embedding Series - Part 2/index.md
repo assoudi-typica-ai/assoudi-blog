@@ -215,7 +215,7 @@ But the model should be understood as a starting point for visual retrieval, not
 
 On this dataset, the nearest-neighbor space is useful, but not sharply separated. That means the best first use case is candidate discovery: retrieve similar claims, inspect them, and then decide whether the retrieval quality is good enough for the workflow.
 
-That is the real value of this part: Oracle 26ai can host the full experiment, but the quality of the similarity behavior still has to be validated against the application you want to build.
+Oracle 26ai can host the full experiment, but the quality of the similarity behavior still has to be validated against the application you want to build.
 
 > Oracle's pre-built CLIP encoders are a strong starting point for multimodal visual similarity experiments inside Oracle 26ai. The deployment decision is whether the resulting embedding space is good enough for the domain, scale, and business decision the application must support.
 ---
