@@ -1,41 +1,33 @@
 ---
 title: "CLIP ViT-B/32 in Oracle 26ai: Pre-built Encoders, What They Are, and How Far They Go"
 date: 2026-05-02T09:00:00-04:00
-draft: true
-
-description: "Load Oracle's pre-built CLIP image and text encoders, understand what ViT-B/32 can and cannot do in an enterprise Oracle deployment, and validate that your vectors are semantically correct before building anything on top of them."
-
-summary: "Oracle 26ai ships two pre-built CLIP ONNX encoders that run entirely in-database. This post loads both, validates the embedding space through a class clustering harness, and gives Oracle practitioners an honest, mechanism-based account of where CLIP ViT-B/32 holds up and where it does not, including a language bias that is invisible in English-only test environments."
-
+draft: false
+description: Load Oracle's pre-built CLIP image and text encoders, understand what ViT-B/32 can and cannot do in an enterprise Oracle deployment, and validate that your vectors are semantically correct before building anything on top of them.
+summary: Oracle 26ai ships two pre-built CLIP ONNX encoders that run entirely in-database. This post loads both, validates the embedding space through a class clustering harness, and gives Oracle practitioners an honest, mechanism-based account of where CLIP ViT-B/32 holds up and where it does not, including a language bias that is invisible in English-only test environments.
 tags:
-  - "oracle ai"
-  - "oracle database 26ai"
-  - "onnx"
-  - "vector-search"
-  - "clip"
-  - "visual-similarity"
-  - "multimodal"
-  - "implementation-guide"
-
+  - oracle ai
+  - oracle database 26ai
+  - onnx
+  - vector-search
+  - clip
+  - visual-similarity
+  - multimodal
+  - implementation-guide
 categories:
-  - "Implementation Guides"
-
+  - Implementation Guides
 series:
-  - "Oracle 26ai Pre-built ONNX Models"
-
+  - Oracle 26ai Pre-built ONNX Models
 cover:
-  image: "images/clip-onnx-models-oracle-26ai-part2-cover.png"
-  alt: "CLIP ViT-B/32 dual-encoder architecture with image and text encoders producing 512-dim vectors in a shared space, loaded into Oracle 26ai via DBMS_VECTOR.LOAD_ONNX_MODEL"
-  caption: "Two encoders, one shared vector space. Both are loaded in this post; cross-modal queries run in Part 3."
+  image: images/img_02.png
+  alt: CLIP ViT-B/32 dual-encoder architecture with image and text encoders producing 512-dim vectors in a shared space, loaded into Oracle 26ai via DBMS_VECTOR.LOAD_ONNX_MODEL
+  caption: Two encoders, one shared vector space. Both are loaded in this post; cross-modal queries run in Part 3.
   relative: true
-
 ShowToc: true
 TocOpen: true
 ShowReadingTime: true
 ShowBreadCrumbs: true
 ShowPostNavLinks: true
 ShowCodeCopyButtons: true
-
 ---
 
 ## The decision this article answers
@@ -227,6 +219,7 @@ The non-negotiable step before production is running the clustering harness and 
 - OpenAI. *CLIP: Connecting text and images.* [openai.com/index/clip/](https://openai.com/index/clip/)
 - Oracle. *ONNX Pipeline Models for Multi-Modal Embedding.* [docs.oracle.com](https://docs.oracle.com/en/database/oracle/oracle-database/26/vecse/onnx-pipeline-models-multi-modal-embedding.html)
 - Oracle. *Generate Multi-Modal Embeddings Using CLIP.* [docs.oracle.com](https://docs.oracle.com/en/database/oracle/oracle-database/26/vecse/generate-multi-modal-embeddings-using-clip.html)
+- Oracle. *Convert Pretrained Models to ONNX Model: End-to-End Instructions for Text Embedding.* [docs.oracle.com](https://docs.oracle.com/en/database/oracle/oracle-database/26/vecse/convert-pretrained-models-onnx-model-end-end-instructions.html)
 
 ---
 
@@ -234,10 +227,7 @@ The non-negotiable step before production is running the clustering harness and 
 
 | Asset | Link |
 |---|---|
-| `clip_demo_vectorize.sql` | Full model registration, bulk UPDATE, similarity queries, clustering harness |
-| `clip_demo_setup.sql` | DB user creation and ONNX directory (Part 1) |
-| `clip_demo_import_dataset.py` | HuggingFace dataset import (Part 1) |
-| Oracle ML AI Models catalog | OCI Object Storage model catalog |
+| GitHub repo (full code) | [assoudi-typica-ai/pre-built-multi-modal-clip-embedding-series](https://github.com/assoudi-typica-ai/pre-built-multi-modal-clip-embedding-series) |
 | Series Part 1 | [HuggingFace Datasets in Oracle 26ai: Jump-Starting CLIP Vector Search Experiments](https://assoudi.blog/posts/huggingface-datasets-oracle-26ai-clip-vector-search/) |
 | Series post #0 | [Building a Local Oracle 26ai Free Lab with Docker](https://assoudi.blog/posts/building-local-oracle-database-26ai-free-lab/) |
 
