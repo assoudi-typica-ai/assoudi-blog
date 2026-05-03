@@ -183,71 +183,49 @@ This is exactly the kind of result Oracle practitioners should look for before b
 
 ---
 
-## What works, what fails, and the causes
+## What this result means
 
-**What holds.** The image encoder produces a meaningful visual similarity space. Same-label images are closer on average than cross-label images, which confirms that the ONNX model is loaded correctly and that the VECTOR column contains useful embeddings.
+The useful observation from this experiment is not that Oracle 26ai can generate vectors. That is expected once the ONNX model is loaded.
 
-**What does not hold yet.** The average separation gap is only **0.039**, so the result does not justify a single global threshold for claims-category retrieval. The right next step is top-k retrieval testing and class-specific threshold analysis, not production activation.
+The more important observation is how Oracle's pre-built CLIP ViT-B/32 image encoder behaves on real, imperfect visual data.
 
-**What requires calibration before production.** Within-class discrimination under photographic variation. Under variable lighting, intra-class distances for high-variability damage types can overlap with inter-class distances. A threshold calibrated on controlled-lighting images will produce cross-class false positives on field photos. WHEN this matters: fraud detection workflows that need to distinguish reused photos from genuinely similar incidents; any application that reads cosine distance as "same incident" rather than "same damage category." The mitigation is threshold calibration against the actual data distribution of the production archive, not the controlled-lighting test set.
+On this dataset, the model creates a usable visual neighborhood, but not a clean decision boundary. Same-label damage images are closer on average than different-label images, but the separation gap is only **0.039**. That is too narrow to treat one global distance threshold as a reliable claims-matching rule.
 
-**Where the architecture fails structurally.** Fine-grained detail and text in images. The 32px floor means that license plate characters, defect measurements, and object counts are lost at tokenization. The CLIP paper is explicit: "CLIP currently struggles with fine grained classification" and "counting objects." For insurance: the image encoder is not usable for matching damage by severity, reading VINs from photos, or distinguishing two dents from three on the same panel. These are hard architectural limits, not tuning opportunities.
+This makes the model useful for candidate retrieval.
 
-**The language constraint that does not appear in English-only testing.** CLIP's text encoder was trained on WIT-400M, which is English-dominant. Non-English text is expected to embed with lower fidelity than English, because the model's learned associations are calibrated to English text-image co-occurrence. Activating `CLIP_VIT_BASE_PATCH32_TXT` in non-English deployments without language validation carries production risk; the validation protocol runs in Part 3. WHEN this matters: any Oracle deployment where `CLIP_VIT_BASE_PATCH32_TXT` will be queried in a language other than English: the degradation is structural, not configurable.
+It can help surface visually similar claims for inspection, comparison, triage, or analyst review. It should not be treated as a standalone classifier, duplicate detector, severity estimator, or automated claims decision engine.
 
-**Limitations of this experiment.** The text encoder is loaded in this article but not fully evaluated here. Since CLIP ViT-B/32 was trained on an English-dominant corpus, non-English text retrieval should not be assumed production-ready. Part 3 will test this directly through cross-modal text-to-image queries.
+That distinction matters for Oracle practitioners. The value of Oracle's shipped CLIP model is that it gives you a fast path to build a realistic multimodal experiment inside the database. The limitation is that the model still has to prove, on your data, whether its nearest neighbors are useful for your business workflow.
 
----
-
-## The recommendation
-
-Start with Oracle's pre-built CLIP image encoder for image similarity PoC work when the visual domain falls within general internet imagery. Use the class clustering harness as a first validation step, but do not treat it as a production decision by itself.
-
-For this dataset, the image encoder produces a useful signal, but the average separation gap is too narrow for a single global threshold. Use top-k retrieval first, inspect cross-class intrusions, and calibrate thresholds against the actual archive before any downstream process consumes the similarity score.
-
-Add the text encoder for cross-modal retrieval, but validate it separately when queries are not in English. The language validation protocol runs in Part 3.
-
-For the insurer scenario, the image encoder is strong enough to support a category-level claims similarity prototype. Moving from prototype to production still requires threshold calibration, archive-scale testing, and validation against real field images.
-
-Oracle's pre-built CLIP encoders are the right starting point for multi-modal search on general visual content. Knowing which limits are material for the specific deployment is what converts a PoC into a production system.
+For this Part 2 experiment, the right pattern is therefore top-k retrieval, not hard thresholding.
 
 ---
 
-## Decision guide for Oracle teams
+## Practical recommendation
 
-The constraints above translate into conditional deployment paths based on visual domain, query language, scale, and discrimination requirements.
+Start with Oracle's pre-built CLIP image encoder when your goal is to prototype visual similarity on general image content.
 
-| Your situation | Recommended path | When to re-evaluate |
-|---|---|---|
-| Image similarity PoC, general visual domain | Deploy Oracle catalog image encoder; run clustering harness before downstream use | When domain shifts to specialized imagery outside internet-scale training distribution |
-| Cross-modal retrieval, English text queries | Load both encoders; validate clustering; use TXT encoder in Part 3 queries | When query language expands beyond English |
-| Non-English text queries in production | Run top-5 overlap test: target language vs. English against same image set | Switch to a multilingual CLIP variant if top-5 overlap falls significantly below the English baseline |
-| Fine-grained discrimination required (severity, text in image, object count) | Test on labeled examples; expect degraded precision at sub-32px detail | Consider ViT-B/16 or a task-specific model if precision falls below requirement |
-| Production scale beyond 100K rows | Same model; add HNSW vector index before querying | Benchmark latency at indexed scale before go-live |
+Use it first as a retrieval layer: given a new image, return the closest candidates from the archive and inspect the results. Do not start with a fixed global threshold. With the narrow separation observed here, a threshold would hide the most important question: are the top results actually useful?
 
-**Validate before production:**
+For a stronger quantitative validation, the next step would be to use the dataset split explicitly and calculate retrieval metrics such as top-1 accuracy, recall@k, mean reciprocal rank, or mean average precision.
 
-1. Run the class clustering query; require a separation gap above 0.10 before trusting any similarity result
-2. Run top-5 retrieval for one reference image per class; verify same-class majority in the top 3 results
-3. Calibrate the similarity threshold against the actual production data distribution, not the test set
-4. For fine-grained use cases: test explicitly against examples where precision at sub-patch detail matters
+In this series, I keep that next step practical. Part 3 will add the Gradio interface so the retrieved results can be inspected visually, including cross-modal text-to-image queries using the text encoder.
 
 ---
 
 ## Final take
 
-Oracle 26ai provides enough native capability to build a serious multimodal visual similarity experiment inside the database.
+Oracle's pre-built CLIP ViT-B/32 image encoder is a strong accelerator for multimodal experimentation inside Oracle 26ai.
 
-In this part, the pipeline stays inside the Oracle stack: real multimodal data, CLIP ViT-B/32 ONNX inference, VECTOR storage, and SQL similarity search.
+It lets Oracle practitioners move quickly from real image data to in-database vector search using BLOB storage, ONNX inference, `VECTOR` columns, and SQL.
 
-The main lesson is practical: generating embeddings is only the first step. The engineering value comes from validating whether the embedding space is organized enough for the business decision you want to support.
+But the model should be understood as a starting point for visual retrieval, not as a finished decision model.
 
-For this dataset, the embedding space is useful but not strongly separated. The average separation gap of **0.039** shows that same-category images are closer on average, but the margin is not wide enough to support a single global threshold.
+On this dataset, the nearest-neighbor space is useful, but not sharply separated. That means the best first use case is candidate discovery: retrieve similar claims, inspect them, and then decide whether the retrieval quality is good enough for the workflow.
 
-That is still a valuable result. It confirms that Oracle 26ai can run the multimodal pipeline end to end inside the database, while also showing why validation matters before turning vector distance into a business decision.
+That is the real value of this part: Oracle 26ai can host the full experiment, but the quality of the similarity behavior still has to be validated against the application you want to build.
 
-> **Oracle's pre-built CLIP encoders are a strong starting point for multimodal visual similarity experiments inside Oracle 26ai. The deployment decision is not only whether the pipeline runs, but whether the embedding space is separated enough for the specific domain, scale, and decision the application must support.**
-
+> Oracle's pre-built CLIP encoders are a strong starting point for multimodal visual similarity experiments inside Oracle 26ai. The deployment decision is whether the resulting embedding space is good enough for the domain, scale, and business decision the application must support.
 ---
 
 ## References
