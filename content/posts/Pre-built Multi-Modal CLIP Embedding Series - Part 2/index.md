@@ -30,7 +30,7 @@ ShowPostNavLinks: true
 ShowCodeCopyButtons: true
 ---
 
-## ## What this article builds
+## What this article builds
 
 Oracle 26ai can be used as a compact environment for experimenting with multimodal visual similarity search.
 
