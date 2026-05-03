@@ -1,9 +1,9 @@
 ---
-title: "CLIP ViT-B/32 in Oracle 26ai: Pre-built Encoders, What They Are, and How Far They Go"
+title: Building a Multimodal Visual Similarity Pipeline Inside Oracle 26ai with CLIP ONNX Models
 date: 2026-05-02T09:00:00-04:00
 draft: false
-description: Load Oracle's pre-built CLIP image and text encoders, understand what ViT-B/32 can and cannot do in an enterprise Oracle deployment, and validate that your vectors are semantically correct before building anything on top of them.
-summary: Oracle 26ai ships two pre-built CLIP ONNX encoders that run entirely in-database. This post loads both, validates the embedding space through a class clustering harness, and gives Oracle practitioners an honest, mechanism-based account of where CLIP ViT-B/32 holds up and where it does not, including a language bias that is invisible in English-only test environments.
+description: This article shows how Oracle practitioners can build an end-to-end multimodal visual similarity experiment inside Oracle 26ai using real HuggingFace image/text data, pre-built CLIP ViT-B/32 ONNX models, VECTOR columns, and SQL-based similarity search.
+summary: Oracle 26ai can act as a compact environment for multimodal visual similarity experiments. This post shows how to use real HuggingFace image/text data, Oracle's pre-built CLIP ViT-B/32 ONNX models, VECTOR columns, and SQL-based similarity search to build and validate an image similarity pipeline inside the database.
 tags:
   - oracle ai
   - oracle database 26ai
@@ -30,15 +30,15 @@ ShowPostNavLinks: true
 ShowCodeCopyButtons: true
 ---
 
-## The decision this article answers
+## ## What this article builds
 
-An insurance adjuster with a new damage claim photo needs the five most visually similar settled claims from the archive, each surfacing a historical repair cost and a fraud flag from a resolved case. The retrieval must work on visual content, not metadata tags. CLIP (Contrastive Language-Image Pretraining) is the model class that makes this possible: it encodes both images and text into the same 512-dimensional vector space, enabling image-to-image similarity search and, once both encoders are loaded, text-to-image retrieval against the same stored vectors. Oracle 26ai's AI Vector Search stores and queries those vectors in SQL, with no external service dependency.
+Oracle 26ai can be used as a compact environment for experimenting with multimodal visual similarity search.
 
-This is Part 2 of a three-part series building that system on the `tahaman/DamageCarDataset` (150 car damage images). Part 1 loaded the dataset into Oracle 26ai and established the vector schema. Part 2 covers the three steps that produce a queryable vector table: loading Oracle's pre-built CLIP ONNX encoders into the database, generating 512-dim embeddings for all 150 images with a single SQL UPDATE, and running a class clustering validation that confirms the vector space is semantically organized before any application depends on it. Part 3 runs cross-modal queries (text-to-image and image-to-image) through both encoders, with a Gradio interface.
+In this article, I show how to build that pipeline end to end: load a real image/text dataset, register Oracle’s pre-built CLIP ViT-B/32 ONNX models, generate image embeddings inside the database, store them in VECTOR columns, and query them with SQL.
 
-Oracle 26ai ships two pre-built CLIP ONNX encoders callable from SQL via `VECTOR_EMBEDDING()`. The capability works. The deployment decision is which of the model's constraints are material for the specific environment: a patch-resolution ceiling that limits fine-grained visual discrimination, a language bias that degrades non-English text retrieval in ways invisible in English-only testing, and a domain boundary outside which the pre-trained model's generalization fails.
+The running use case is insurance claims similarity. Given a new car damage photo, the system should retrieve visually similar historical claims from the archive. The point is not to build a full claims application yet. The point is to validate whether Oracle 26ai can act as the execution, storage, and search layer for this kind of multimodal AI workflow.
 
-The answer requires understanding what ViT-B/32 is built on before touching the ONNX files.
+Part 1 loaded the HuggingFace `tahaman/DamageCarDataset` into Oracle 26ai. Part 2 loads the CLIP ONNX encoders, generates image embeddings, stores them in VECTOR columns, and validates whether the embedding space is useful enough for similarity search. Part 3 will add cross-modal text-to-image queries and the Gradio interface.
 
 ---
 
@@ -54,16 +54,16 @@ Those properties are fixed at training time; the Oracle implementation inherits 
 
 ---
 
-## How Oracle 26ai implements CLIP: the boundary and its rationale
+## The Oracle 26ai multimodal pipeline
 
-The entire CLIP inference pipeline runs inside the database engine, registered as mining models and callable via `VECTOR_EMBEDDING()`. No external service, no Python inference loop, no round-trip after loading. The `.onnx` files cross the system boundary once via `docker cp`; after `LOAD_ONNX_MODEL`, Oracle owns the model.
+The pipeline has five steps: import the real dataset, create the VECTOR-enabled table, load the CLIP ONNX model, generate embeddings in-database, and run SQL similarity search.
 
 ### Architecture
 
 ![Oracle 26ai AI Vector Search: BLOB images in damage_car_table feed VECTOR_EMBEDDING() with CLIP_VIT_BASE_PATCH32_IMG, producing 512-dim FLOAT32 vectors queried with VECTOR_DISTANCE()](./images/img_02.png)
-*Both CLIP encoders output to the same 512-dim space and live inside Oracle after registration. The docker cp is the only external operation.*
+*Both CLIP encoders output to the same 512-dim space and live inside Oracle after registration. After the dataset and ONNX files are staged, embedding generation, storage, and similarity search run inside the database.*
 
-**What this buys:** embedding generation scales with Oracle's query execution infrastructure, not with an external service's capacity or availability. The operational surface for managing a separate embedding pipeline disappears.
+**What this buys:** embedding generation becomes part of the database execution path instead of a separate service call. For a prototype or controlled experiment, the operational surface is smaller: no external vector database, no separate embedding API, and no additional orchestration layer just to test visual similarity.
 
 **Why Oracle's pre-built ONNX models are not raw model exports.** Starting with OML4Py 2.0, Oracle's OML4Py client augments pre-trained HuggingFace transformer models before exporting to ONNX: it bakes the full preprocessing and postprocessing pipeline into the ONNX graph itself. For the image encoder, that includes image resizing, pixel normalization, patch extraction, and L2 normalization of the output. For the text encoder, it includes BPE tokenization, positional encoding, and L2 normalization. The resulting ONNX file is an executable pipeline, not just model weights. Exporting CLIP directly from HuggingFace produces a graph without the preprocessing contract: the vectors compute but do not represent CLIP's semantic geometry. ([Oracle ONNX pipeline docs](https://docs.oracle.com/en/database/oracle/oracle-database/26/vecse/onnx-pipeline-models-multi-modal-embedding.html))
 
@@ -124,7 +124,7 @@ FROM damage_car_table;
 
 A gap between the two counts means `VECTOR_EMBEDDING()` silently skipped NULL BLOBs. A matching count of 150 confirms the UPDATE ran, not that the vectors are semantically correct.
 
-**Evaluation harness.** The class clustering query below is the only reliable test of semantic organization. A correctly loaded model produces lower average distance within damage classes than across them.
+**Evaluation harness.** The class clustering query below is the first useful test of semantic organization.
 
 ```sql
 SELECT t1.label AS class_a, t2.label AS class_b,
@@ -150,17 +150,44 @@ Three metrics, chosen because they directly address the insurer's question: does
 | Inter-class avg cosine distance | Avg across all cross-label pairs | Measures category-level discrimination |
 | Separation gap | Inter minus intra average | A gap above 0.10 supports threshold-based retrieval; below 0.05, the distributions overlap and no useful threshold exists |
 
-### What to look for
+### Result from this dataset
 
-For visually distinctive damage classes (glass shatter, tire flat), intra-class averages will fall clearly below inter-class averages. For visually variable classes (scratch under different lighting), the intra-class distribution will extend toward the inter-class range.
+On the `tahaman/DamageCarDataset` sample used in this series, the class clustering harness produced a separation gap of **0.24** between average inter-class and intra-class cosine distance.
 
-A gap above 0.10 between intra-class and inter-class averages confirms the model is working and supports threshold-based retrieval. A gap below 0.05 means the distributions overlap and no reliable threshold exists. Deeper retrieval testing (top-5 queries, cross-class intrusions under variable lighting, OCR probes) runs in Part 3 with the Gradio interface.
+That result is strong enough for category-level visual similarity experimentation. It means the embedding space is not random: same-category damage images are, on average, closer to each other than to images from other damage categories.
+
+It does not mean the model is ready for every insurance workflow. It supports claims-category retrieval experiments. It does not, by itself, validate same-incident detection, damage severity estimation, license plate reading, or production-scale search behavior.
+
+### What the result shows
+
+The class clustering harness produced an average intra-class cosine distance of **0.184** and an average inter-class cosine distance of **0.223**. The resulting average separation gap is **0.039**.
+
+That means the model is not randomly organizing the images: same-label pairs are closer on average than cross-label pairs. However, the margin is narrow. It does not support a production-style global threshold for category retrieval.
+
+The more useful interpretation is class-specific. `crack` and `tire flat` show strong internal clustering, with intra-class averages of **0.155** and **0.162**. `dent` and `scratch` are weaker, with intra-class averages of **0.210** and **0.212**, which overlap with several cross-class distances.
+
+This is exactly the kind of result Oracle practitioners should look for before building downstream logic on top of vector search. The embedding pipeline works, but the similarity score still needs retrieval testing, class-specific analysis, and threshold calibration against the real archive.
+
+
+| Result | Value | Interpretation |
+|---|---:|---|
+| Average intra-class distance | 0.184 | Same-label images are moderately close |
+| Average inter-class distance | 0.223 | Cross-label images are farther on average |
+| Average separation gap | 0.039 | Useful signal, but not enough for a global threshold |
+| Best internal clusters | crack, tire flat | Stronger class-level grouping |
+| Weakest internal clusters | dent, scratch | Higher overlap risk |
+
+
+![Class clustering query result showing cosine distances between car damage classes](./images/img_03.png)
+*Class-pair cosine distances returned by the validation query. The result confirms useful visual structure, but also shows overlap between some same-class and cross-class distances.*
 
 ---
 
 ## What works, what fails, and the causes
 
-**What holds reliably.** Category-level visual similarity within CLIP's training distribution. Vehicle damage (scratches, dents, broken glass, tire damage) is well-represented in WIT-400M. Category-level distance separation supports a practical threshold for claims category retrieval. For image similarity on English-language content, the image encoder is deployable.
+**What holds.** The image encoder produces a meaningful visual similarity space. Same-label images are closer on average than cross-label images, which confirms that the ONNX model is loaded correctly and that the VECTOR column contains useful embeddings.
+
+**What does not hold yet.** The average separation gap is only **0.039**, so the result does not justify a single global threshold for claims-category retrieval. The right next step is top-k retrieval testing and class-specific threshold analysis, not production activation.
 
 **What requires calibration before production.** Within-class discrimination under photographic variation. Under variable lighting, intra-class distances for high-variability damage types can overlap with inter-class distances. A threshold calibrated on controlled-lighting images will produce cross-class false positives on field photos. WHEN this matters: fraud detection workflows that need to distinguish reused photos from genuinely similar incidents; any application that reads cosine distance as "same incident" rather than "same damage category." The mitigation is threshold calibration against the actual data distribution of the production archive, not the controlled-lighting test set.
 
@@ -168,15 +195,19 @@ A gap above 0.10 between intra-class and inter-class averages confirms the model
 
 **The language constraint that does not appear in English-only testing.** CLIP's text encoder was trained on WIT-400M, which is English-dominant. Non-English text is expected to embed with lower fidelity than English, because the model's learned associations are calibrated to English text-image co-occurrence. Activating `CLIP_VIT_BASE_PATCH32_TXT` in non-English deployments without language validation carries production risk; the validation protocol runs in Part 3. WHEN this matters: any Oracle deployment where `CLIP_VIT_BASE_PATCH32_TXT` will be queried in a language other than English: the degradation is structural, not configurable.
 
-**Limitations of this experiment.** The 150-row dataset produces clear patterns but does not validate production-scale HNSW index behavior. French encoder quality is asserted from training data analysis; direct measurement runs in Part 3. Cross-domain transfer (how this model performs outside the automotive and consumer visual domain) is not tested.
+**Limitations of this experiment.** The text encoder is loaded in this article but not fully evaluated here. Since CLIP ViT-B/32 was trained on an English-dominant corpus, non-English text retrieval should not be assumed production-ready. Part 3 will test this directly through cross-modal text-to-image queries.
 
 ---
 
 ## The recommendation
 
-Start with Oracle's pre-built CLIP encoders for image similarity PoC work when the visual domain falls within general internet imagery and the primary query language is English. Run the class clustering harness before any downstream application consumes the vectors. Calibrate the similarity threshold against the actual data distribution of the production archive before activating a retrieval filter. Run language validation before activating the TXT encoder in non-English deployments; the protocol runs in Part 3.
+Start with Oracle's pre-built CLIP image encoder for image similarity PoC work when the visual domain falls within general internet imagery. Use the class clustering harness as a first validation step, but do not treat it as a production decision by itself.
 
-For the insurer: the image encoder is production-ready for the claims photo similarity use case based on the class separation gap and the in-database architecture.
+For this dataset, the image encoder produces a useful signal, but the average separation gap is too narrow for a single global threshold. Use top-k retrieval first, inspect cross-class intrusions, and calibrate thresholds against the actual archive before any downstream process consumes the similarity score.
+
+Add the text encoder for cross-modal retrieval, but validate it separately when queries are not in English. The language validation protocol runs in Part 3.
+
+For the insurer scenario, the image encoder is strong enough to support a category-level claims similarity prototype. Moving from prototype to production still requires threshold calibration, archive-scale testing, and validation against real field images.
 
 Oracle's pre-built CLIP encoders are the right starting point for multi-modal search on general visual content. Knowing which limits are material for the specific deployment is what converts a PoC into a production system.
 
@@ -205,11 +236,17 @@ The constraints above translate into conditional deployment paths based on visua
 
 ## Final take
 
-The insurer's claims similarity system has a deployable foundation: the image encoder produces reliable category-level grouping, confirmed by the class clustering harness.
+Oracle 26ai provides enough native capability to build a serious multimodal visual similarity experiment inside the database.
 
-The non-negotiable step before production is running the clustering harness and calibrating the similarity threshold against the actual production archive before any application depends on the vectors.
+In this part, the pipeline stays inside the Oracle stack: real multimodal data, CLIP ViT-B/32 ONNX inference, VECTOR storage, and SQL similarity search.
 
-> **Oracle's pre-built CLIP encoders are production-ready for general visual similarity on English-language data. The deployment decision is not whether to use them: it is which of their documented limits are material for the specific domain and language of the operational environment.**
+The main lesson is practical: generating embeddings is only the first step. The engineering value comes from validating whether the embedding space is organized enough for the business decision you want to support.
+
+For this dataset, the embedding space is useful but not strongly separated. The average separation gap of **0.039** shows that same-category images are closer on average, but the margin is not wide enough to support a single global threshold.
+
+That is still a valuable result. It confirms that Oracle 26ai can run the multimodal pipeline end to end inside the database, while also showing why validation matters before turning vector distance into a business decision.
+
+> **Oracle's pre-built CLIP encoders are a strong starting point for multimodal visual similarity experiments inside Oracle 26ai. The deployment decision is not only whether the pipeline runs, but whether the embedding space is separated enough for the specific domain, scale, and decision the application must support.**
 
 ---
 
