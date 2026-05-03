@@ -183,21 +183,13 @@ This is exactly the kind of result Oracle practitioners should look for before b
 
 ---
 
-## What this result means
+### What this result means
 
-The useful observation from this experiment is not that Oracle 26ai can generate vectors. That is expected once the ONNX model is loaded.
-
-The more important observation is how Oracle's pre-built CLIP ViT-B/32 image encoder behaves on real, imperfect visual data.
-
-On this dataset, the model creates a usable visual neighborhood, but not a clean decision boundary. Same-label damage images are closer on average than different-label images, but the separation gap is only **0.039**. That is too narrow to treat one global distance threshold as a reliable claims-matching rule.
-
-This makes the model useful for candidate retrieval.
+On this dataset, the model creates a usable visual neighborhood, but not a clean decision boundary. Same-label damage images are closer on average than different-label images. This makes the model useful for candidate retrieval.
 
 It can help surface visually similar claims for inspection, comparison, triage, or analyst review. It should not be treated as a standalone classifier, duplicate detector, severity estimator, or automated claims decision engine.
 
-That distinction matters for Oracle practitioners. The value of Oracle's shipped CLIP model is that it gives you a fast path to build a realistic multimodal experiment inside the database. The limitation is that the model still has to prove, on your data, whether its nearest neighbors are useful for your business workflow.
-
-For this Part 2 experiment, the right pattern is therefore top-k retrieval, not hard thresholding.
+The value of Oracle's shipped CLIP model is that it gives you a fast path to build a realistic multimodal experiment inside the database. The limitation is that the model still has to prove, on your data, whether its nearest neighbors are useful for your business workflow (using top-k retrieval).
 
 ---
 
@@ -205,11 +197,11 @@ For this Part 2 experiment, the right pattern is therefore top-k retrieval, not 
 
 Start with Oracle's pre-built CLIP image encoder when your goal is to prototype visual similarity on general image content.
 
-Use it first as a retrieval layer: given a new image, return the closest candidates from the archive and inspect the results. Do not start with a fixed global threshold. With the narrow separation observed here, a threshold would hide the most important question: are the top results actually useful?
+Use it first as a retrieval layer: given a new image, return the closest candidates from the archive and inspect the results. 
 
-For a stronger quantitative validation, the next step would be to use the dataset split explicitly and calculate retrieval metrics such as top-1 accuracy, recall@k, mean reciprocal rank, or mean average precision.
+For a stronger quantitative validation, use the dataset split explicitly and calculate retrieval metrics such as top-1 accuracy, recall@k, mean reciprocal rank, or mean average precision.
 
-In this series, I keep that next step practical. Part 3 will add the Gradio interface so the retrieved results can be inspected visually, including cross-modal text-to-image queries using the text encoder.
+Part 3 will add the Gradio interface so the retrieved results can be inspected visually, including cross-modal text-to-image queries using the text encoder.
 
 ---
 
