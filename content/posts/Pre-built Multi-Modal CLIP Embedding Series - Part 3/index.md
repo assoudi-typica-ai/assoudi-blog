@@ -1,6 +1,6 @@
 ---
 title: "CLIP in Oracle 26ai: A Gradio UI for Qualitative Encoder Validation"
-date: 2026-05-31T09:00:00-04:00
+date: 2026-05-31T11:08:19.653Z
 draft: false
 description: "How to build a Gradio prototype that validates Oracle's pre-built CLIP encoders qualitatively: a single Python file turns VECTOR_DISTANCE() queries into an interactive image retrieval UI with no inference running outside Oracle."
 summary: "SQL distance metrics confirm that CLIP's shared vector space is geometrically organized. A Gradio UI confirms whether the results are meaningful to a human reviewer. This post builds that prototype and uses it to surface CLIP's real constraints on a car damage dataset: class confusion in the dent category, complete accuracy inversion on French-language glass shatter queries, and a search engine that returns results for every input regardless of domain fit."

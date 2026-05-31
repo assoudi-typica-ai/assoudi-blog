@@ -6,14 +6,21 @@
     <description>Recent content in Oracle Ai on Hicham Assoudi</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 26 Apr 2026 09:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Sat, 02 May 2026 09:00:00 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/oracle-ai/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Using a HuggingFace Dataset to Jump-Start Oracle 26ai Vector Search Experiments</title>
-      <link>http://localhost:1313/posts/hf-dataset-jumpstart-oracle-26ai-vector-search/</link>
-      <pubDate>Sun, 26 Apr 2026 09:00:00 -0400</pubDate>
-      <guid>http://localhost:1313/posts/hf-dataset-jumpstart-oracle-26ai-vector-search/</guid>
-      <description>How I stopped building throwaway test data from scratch and used a HuggingFace dataset to get a fully vectorized Oracle 26ai table — with CLIP image embeddings — in a single session.</description>
+      <title>Building a Multimodal Visual Similarity Pipeline Inside Oracle 26ai with CLIP ONNX Models</title>
+      <link>http://localhost:1313/posts/pre-built-multi-modal-clip-embedding-series---part-2/</link>
+      <pubDate>Sat, 02 May 2026 09:00:00 -0400</pubDate>
+      <guid>http://localhost:1313/posts/pre-built-multi-modal-clip-embedding-series---part-2/</guid>
+      <description>This article shows how Oracle practitioners can build an end-to-end multimodal visual similarity experiment inside Oracle 26ai using real HuggingFace image/text data, pre-built CLIP ViT-B/32 ONNX models, VECTOR columns, and SQL-based similarity search.</description>
+    </item>
+    <item>
+      <title>HuggingFace Datasets in Oracle 26ai: Jump-Starting CLIP Vector Search Experiments</title>
+      <link>http://localhost:1313/posts/pre-built-multi-modal-clip-embedding-series---part-1/</link>
+      <pubDate>Wed, 29 Apr 2026 09:00:00 -0400</pubDate>
+      <guid>http://localhost:1313/posts/pre-built-multi-modal-clip-embedding-series---part-1/</guid>
+      <description>How to go from zero data to a fully structured Oracle 26ai table, with images, text descriptions, and an empty VECTOR column, using a HuggingFace dataset, in one session, without building a data engineering pipeline.</description>
     </item>
     <item>
       <title>Building a Local Oracle Database 26ai Free Lab with Docker on Windows</title>
