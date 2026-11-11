@@ -13,7 +13,7 @@
       <link>http://localhost:1313/posts/oracle-26ai-in-database-named-entity-recognition/</link>
       <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/oracle-26ai-in-database-named-entity-recognition/</guid>
-      <description>Running a custom Arabic BERT NER model inside Oracle AI Database 26ai on CPU, with entities returned to SQL and no external inference service.</description>
+      <description>Oracle AI Database 26ai runs ONNX models for embeddings and classification, but not token-level tasks like NER. I removed that limitation and ran my Arabic BERT NER model inside the database, on CPU, called from SQL.</description>
     </item>
     <item>
       <title>CLIP in Oracle 26ai: A Gradio UI for Qualitative Encoder Validation</title>
