@@ -41,10 +41,9 @@
       <link>http://localhost:1313/about/</link>
       <pubDate>Sun, 05 Apr 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/about/</guid>
-      <description>&lt;p&gt;Hey I&amp;rsquo;m &lt;strong&gt;Hicham Assoudi&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;I help Oracle practitioners, architects, developers, dbas, and enterprises make better AI implementation decisions by combining Oracle depth, real experiments, and research-grade evaluation.&lt;/p&gt;
-&lt;p&gt;I’m an Oracle consultant, AI researcher, and technical author.&lt;/p&gt;
-&lt;p&gt;My work sits at the intersection of enterprise Oracle technologies and practical artificial intelligence. I focus on topics such as Oracle Database AI, OCI Data Science, multilingual AI, and enterprise research-driven AI implementation patterns.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Hi, I&amp;rsquo;m &lt;strong&gt;Hicham Assoudi&lt;/strong&gt;, Oracle ACE Pro, Oracle consultant, computer science professor, AI researcher, and technical author.&lt;/p&gt;
+&lt;p&gt;I have spent more than 30 years working with Oracle technologies, from enterprise architecture and integration to databases, cloud platforms, and AI solutions. My professional journey includes working with organizations such as Oracle and IBM.&lt;/p&gt;
+&lt;p&gt;Alongside my industry career, I earned a &lt;strong&gt;PhD in Computer Science&lt;/strong&gt;, specializing in Artificial Intelligence and Natural Language Processing (NLP). Today, I combine consulting, teaching, and applied AI research.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Books</title>

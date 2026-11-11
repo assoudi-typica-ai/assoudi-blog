@@ -1,43 +1,70 @@
 {{- with site.Params.homeInfoParams }}
 <article class="first-entry home-info">
-    <div style="display:flex; align-items:flex-start; gap:28px; flex-wrap:wrap;">
-        
-        <div style="display:flex; flex-direction:column; align-items:center; flex-shrink:0;">
-            {{- with site.Params.homeInfoParams.imageUrl }}
-            <img src="{{ . }}" alt="Hicham Assoudi"
-                 style="width:84px; height:84px; border-radius:50%; object-fit:cover; margin-top:6px;" />
+
+    <div class="home-hero">
+
+        <!-- Profile photo + Oracle ACE Pro badge -->
+        <div class="hero-profile">
+
+            {{- with .imageUrl }}
+            <img src="{{ "/images/hicham-assoudi.png" | relURL }}"
+                 alt="Hicham Assoudi"
+                 class="hero-avatar"
+                 width="116"
+                 height="116" />
             {{- end }}
 
-            <div style="margin-top:10px;">
-                <img src='{{ "/images/badge-ace-pro-2026-sq.png" | relURL }}'
-                     alt="Oracle ACE"
-                     style="height:40px; width:auto;" />
-            </div>
+            <img src='{{ "/images/badge-ace-pro-2026-hx.png" | relURL }}'
+                 alt="Oracle ACE Pro 2026"
+                 class="hero-badge" />
+
         </div>
 
-        <div style="flex:1; min-width:220px;">
-            <header class="entry-header">
+        <!-- Main content -->
+        <div class="hero-main">
+
+            <!-- Blog headline -->
+            <header class="entry-header hero-title">
                 <h1>{{ .Title | markdownify }}</h1>
             </header>
-            <header class="entry-content">
-                <h2>{{ .Content | markdownify }}</h2>
-            </header>
 
-
-            <div style="margin-top:16px; display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
-
-                <div style="margin-top:14px; font-size:1rem; font-weight:500; line-height:1.5; color:var(--primary);">
-                    By<strong> Hicham Assoudi </strong> · Oracle Consultant & ACE Pro · CS Professor & AI Researcher · Author
-                </div>
-
-                <div>
-                    <a href='{{ "/about/" | relURL }}' class="about-btn">About me</a>
-                    {{ partial "social_icons.html" (dict "align" site.Params.homeInfoParams.AlignSocialIconsTo) }}
-                </div>
-
-                
+            <!-- Blog description -->
+            <div class="hero-description">
+                {{ .Content | markdownify }}
             </div>
+
+            <!-- Professional identity -->
+            <div class="hero-identity">
+
+                <strong>Hicham Assoudi</strong>
+
+                <span class="hero-credentials">
+                    Oracle ACE Pro &amp; Consultant ·
+                    CS Professor &amp; AI Researcher ·
+                    Author
+                </span>
+
+            </div>
+
+            <!-- About + Social links -->
+            <div class="hero-actions">
+
+                <a href='{{ "/about/" | relURL }}'
+                   class="hero-about-btn">
+                    About me
+                    <span aria-hidden="true">→</span>
+                </a>
+
+                <div class="hero-social">
+                    {{ partial "social_icons.html"
+                       (dict "align" .AlignSocialIconsTo) }}
+                </div>
+
+            </div>
+
         </div>
+
     </div>
+
 </article>
 {{- end -}}

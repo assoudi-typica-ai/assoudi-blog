@@ -57,3 +57,153 @@ article.home-info .social-icons a svg {
 [dir="rtl"] article.home-info > div {
     flex-direction: row-reverse;
 }
+
+
+/* ── Hero layout ─────────────────────────────────────────── */
+article.home-info .home-hero {
+    display: grid;
+    grid-template-columns: 140px minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
+}
+
+article.home-info .hero-main {
+    min-width: 0;
+}
+
+/* ── Portrait + overlapping Oracle ACE Pro badge ───────── */
+article.home-info .hero-profile {
+    position: relative;
+    width: 116px;
+    height: 130px;
+    margin-top: 5px;
+}
+
+article.home-info .hero-avatar {
+    display: block;
+    width: 116px;
+    height: 116px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+}
+
+article.home-info .hero-badge {
+    position: absolute;
+    width: 70px;
+    height: auto;
+    bottom: -5px;
+    inset-inline-end: -20px;
+    z-index: 2;
+    filter: drop-shadow(0 3px 5px rgba(0,0,0,0.16));
+}
+
+/* ── Tagline ─────────────────────────────────────────────── */
+article.home-info .hero-description {
+    margin-top: 12px;
+    max-width: 560px;
+    font-size: 0.97rem;
+    line-height: 1.7;
+    color: var(--secondary);
+}
+
+article.home-info .hero-description p,
+article.home-info .hero-description h2 {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+}
+
+/* ── Professional identity ──────────────────────────────── */
+article.home-info .hero-identity {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-top: 20px;
+    padding-inline-start: 14px;
+    border-inline-start: 3px solid #1464a5;
+}
+
+article.home-info .hero-identity strong {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+article.home-info .hero-credentials {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--secondary);
+}
+
+/* ── About button + social icons alignment ─────────────── */
+article.home-info .hero-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 22px;
+}
+
+article.home-info .hero-social {
+    display: flex;
+    align-items: center;
+}
+
+article.home-info .hero-about-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 20px;
+    background: var(--primary);
+    color: var(--theme) !important;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none !important;
+    transition: opacity 0.15s;
+}
+
+article.home-info .hero-about-btn:hover {
+    opacity: 0.82;
+}
+
+/* ── Mobile ──────────────────────────────────────────────── */
+@media (max-width: 600px) {
+    article.home-info .home-hero {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    article.home-info .hero-profile {
+        width: 96px;
+        height: 108px;
+    }
+
+    article.home-info .hero-avatar {
+        width: 96px;
+        height: 96px;
+    }
+
+    article.home-info .hero-badge {
+        width: 56px;
+        inset-inline-end: -14px;
+    }
+
+    article.home-info .hero-identity {
+        margin-top: 16px;
+    }
+
+    article.home-info .hero-actions {
+        margin-top: 18px;
+        gap: 12px;
+    }
+}
+
+/* ── RTL ─────────────────────────────────────────────────── */
+[dir="rtl"] article.home-info .home-hero {
+    direction: rtl;
+}
+
