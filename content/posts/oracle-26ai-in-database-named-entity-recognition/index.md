@@ -1,8 +1,8 @@
 ---
 title: "Named Entity Recognition Inside Oracle AI Database 26ai: No External AI API Required"
 date: 2026-11-11
-draft: true
-author: Hicham Assoudi
+draft: false
+author: Hicham Assoudi, Ph.D.
 description: Oracle AI Database 26ai runs ONNX models for embeddings and classification, but not token-level tasks like NER. I removed that limitation and ran my Arabic BERT NER model inside the database, on CPU, called from SQL.
 summary: Oracle AI Database 26ai can run AI models next to your data, except the token-level kind that Named Entity Recognition needs. This article covers the need, the limitation, the experiment that removed it with my own Arabic NER model, and a comparison with OCI Language and the Private AI Services Container.
 slug: oracle-26ai-in-database-named-entity-recognition
