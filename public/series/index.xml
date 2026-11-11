@@ -6,8 +6,22 @@
     <description>Recent content in Series on Hicham Assoudi</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 02 May 2026 09:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Wed, 11 Nov 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Oracle 26ai AI Builder Series</title>
+      <link>http://localhost:1313/series/oracle-26ai-ai-builder-series/</link>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/series/oracle-26ai-ai-builder-series/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Oracle 26ai Pre-Built ONNX CLIP Models</title>
+      <link>http://localhost:1313/series/oracle-26ai-pre-built-onnx-clip-models/</link>
+      <pubDate>Sun, 31 May 2026 11:08:19 +0000</pubDate>
+      <guid>http://localhost:1313/series/oracle-26ai-pre-built-onnx-clip-models/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Oracle 26ai Pre-Built ONNX Models</title>
       <link>http://localhost:1313/series/oracle-26ai-pre-built-onnx-models/</link>

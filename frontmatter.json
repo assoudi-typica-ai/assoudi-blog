@@ -105,6 +105,11 @@
           "title": "ShowCodeCopyButtons",
           "name": "ShowCodeCopyButtons",
           "type": "boolean"
+        },
+        {
+          "title": "author",
+          "name": "author",
+          "type": "string"
         }
       ]
     }

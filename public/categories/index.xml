@@ -6,12 +6,26 @@
     <description>Recent content in Categories on Hicham Assoudi</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 02 May 2026 09:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Wed, 11 Nov 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Artificial Intelligence</title>
+      <link>http://localhost:1313/categories/artificial-intelligence/</link>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/artificial-intelligence/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Oracle Database</title>
+      <link>http://localhost:1313/categories/oracle-database/</link>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/oracle-database/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Implementation Guides</title>
       <link>http://localhost:1313/categories/implementation-guides/</link>
-      <pubDate>Sat, 02 May 2026 09:00:00 -0400</pubDate>
+      <pubDate>Sun, 31 May 2026 11:08:19 +0000</pubDate>
       <guid>http://localhost:1313/categories/implementation-guides/</guid>
       <description></description>
     </item>

@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Oracle Ai on Hicham Assoudi</title>
+    <title>Oracle-Ai on Hicham Assoudi</title>
     <link>http://localhost:1313/tags/oracle-ai/</link>
-    <description>Recent content in Oracle Ai on Hicham Assoudi</description>
+    <description>Recent content in Oracle-Ai on Hicham Assoudi</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 02 May 2026 09:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Wed, 11 Nov 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/oracle-ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Named Entity Recognition Inside Oracle AI Database 26ai: No External AI API Required</title>
+      <link>http://localhost:1313/posts/oracle-26ai-in-database-named-entity-recognition/</link>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/oracle-26ai-in-database-named-entity-recognition/</guid>
+      <description>Running a custom Arabic BERT NER model inside Oracle AI Database 26ai on CPU, with entities returned to SQL and no external inference service.</description>
+    </item>
+    <item>
+      <title>CLIP in Oracle 26ai: A Gradio UI for Qualitative Encoder Validation</title>
+      <link>http://localhost:1313/posts/pre-built-multi-modal-clip-embedding-series---part-3/</link>
+      <pubDate>Sun, 31 May 2026 11:08:19 +0000</pubDate>
+      <guid>http://localhost:1313/posts/pre-built-multi-modal-clip-embedding-series---part-3/</guid>
+      <description>How to build a Gradio prototype that validates Oracle&amp;#39;s pre-built CLIP encoders qualitatively: a single Python file turns VECTOR_DISTANCE() queries into an interactive image retrieval UI with no inference running outside Oracle.</description>
+    </item>
     <item>
       <title>Building a Multimodal Visual Similarity Pipeline Inside Oracle 26ai with CLIP ONNX Models</title>
       <link>http://localhost:1313/posts/pre-built-multi-modal-clip-embedding-series---part-2/</link>

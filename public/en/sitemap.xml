@@ -2,11 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/pre-built-multi-modal-clip-embedding-series---part-2/</loc>
-    <lastmod>2026-05-02T09:00:00-04:00</lastmod>
+    <loc>http://localhost:1313/tags/arabic-nlp/</loc>
+    <lastmod>2026-11-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/artificial-intelligence/</loc>
+    <lastmod>2026-11-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/bert/</loc>
+    <lastmod>2026-11-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2026-05-02T09:00:00-04:00</lastmod>
+    <lastmod>2026-11-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -23,11 +29,8 @@
                 href="http://localhost:1313/categories/"
                 />
   </url><url>
-    <loc>http://localhost:1313/tags/clip/</loc>
-    <lastmod>2026-05-02T09:00:00-04:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2026-05-02T09:00:00-04:00</lastmod>
+    <lastmod>2026-11-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -44,32 +47,47 @@
                 href="http://localhost:1313/"
                 />
   </url><url>
-    <loc>http://localhost:1313/categories/implementation-guides/</loc>
-    <lastmod>2026-05-02T09:00:00-04:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/tags/implementation-guide/</loc>
-    <lastmod>2026-05-02T09:00:00-04:00</lastmod>
+    <lastmod>2026-11-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/multimodal/</loc>
-    <lastmod>2026-05-02T09:00:00-04:00</lastmod>
+    <loc>http://localhost:1313/tags/in-database-ai/</loc>
+    <lastmod>2026-11-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/modern-nlp-on-oracle/</loc>
+    <lastmod>2026-11-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/named-entity-recognition/</loc>
+    <lastmod>2026-11-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/oracle-26ai-in-database-named-entity-recognition/</loc>
+    <lastmod>2026-11-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/nlp/</loc>
+    <lastmod>2026-11-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/onnx/</loc>
-    <lastmod>2026-05-02T09:00:00-04:00</lastmod>
+    <lastmod>2026-11-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/series/oracle-26ai-pre-built-onnx-models/</loc>
-    <lastmod>2026-05-02T09:00:00-04:00</lastmod>
+    <loc>http://localhost:1313/series/oracle-26ai-ai-builder-series/</loc>
+    <lastmod>2026-11-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/oracle-ai/</loc>
-    <lastmod>2026-05-02T09:00:00-04:00</lastmod>
+    <loc>http://localhost:1313/tags/oracle-ai-database/</loc>
+    <lastmod>2026-11-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/oracle-database/</loc>
+    <lastmod>2026-11-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/oracle-database-26ai/</loc>
-    <lastmod>2026-05-02T09:00:00-04:00</lastmod>
+    <lastmod>2026-11-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/oracle-ai/</loc>
+    <lastmod>2026-11-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2026-05-02T09:00:00-04:00</lastmod>
+    <lastmod>2026-11-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/series/</loc>
-    <lastmod>2026-05-02T09:00:00-04:00</lastmod>
+    <lastmod>2026-11-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -87,7 +105,7 @@
                 />
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2026-05-02T09:00:00-04:00</lastmod>
+    <lastmod>2026-11-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -104,7 +122,31 @@
                 href="http://localhost:1313/tags/"
                 />
   </url><url>
+    <loc>http://localhost:1313/tags/clip/</loc>
+    <lastmod>2026-05-31T11:08:19+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/pre-built-multi-modal-clip-embedding-series---part-3/</loc>
+    <lastmod>2026-05-31T11:08:19+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/gradio/</loc>
+    <lastmod>2026-05-31T11:08:19+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/implementation-guides/</loc>
+    <lastmod>2026-05-31T11:08:19+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/multimodal/</loc>
+    <lastmod>2026-05-31T11:08:19+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/series/oracle-26ai-pre-built-onnx-clip-models/</loc>
+    <lastmod>2026-05-31T11:08:19+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/tags/vector-search/</loc>
+    <lastmod>2026-05-31T11:08:19+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/pre-built-multi-modal-clip-embedding-series---part-2/</loc>
+    <lastmod>2026-05-02T09:00:00-04:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/series/oracle-26ai-pre-built-onnx-models/</loc>
     <lastmod>2026-05-02T09:00:00-04:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/visual-similarity/</loc>
